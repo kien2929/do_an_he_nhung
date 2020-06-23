@@ -1,0 +1,24 @@
+sudo nano .bashrc
+source .bashrc
+
+java net.tinyos.tools.Listen -comm serial@/dev/ttyUSB0:telosb
+
+new
+export TINYOS_ROOT_DIR="/home/hades/tinyos-new"
+export TINYOS_OS_DIR=$TINYOS_ROOT_DIR/tos
+export TINYOS_MAKE_DIR=$TINYOS_ROOT_DIR/support/make
+export TINYOS_MAKERULES=$TINYOS_MAKE_DIR/Makerules
+export TINYOS_MAKEDEFAULTS=$TINYOS_MAKE_DIR/Makedefaults
+export TINYOS_MAKELOCAL=$TINYOS_MAKE_DIR/Makelocal
+export CLASSPATH=$CLASSPATH:$TINYOS_ROOT_DIR/tools/tinyos/java
+export PYTHONPATH=$PYTHONPATH:$TINYOS_ROOT_DIR/tools/tinyos/python
+
+old 
+
+export TOSROOT="/home/hades/tinyos-old"
+export TOSDIR="$TOSROOT/tos"
+export CLASSPATH=$CLASSPATH:$TOSROOT/support/sdk/java
+export MAKERULES="$TOSROOT/support/make/Makerules"
+export PYTHONPATH=$PYTHONPATH:$TOSROOT/support/sdk/python
+
+make telosb reinstall bsl,/dev/ttyUSB0
